@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Expense Tracker</title>
+</head>
+
+<body>
+
+<h1>Smart Expense Tracker</h1>
+
+<h2>Add Expense</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+Description:<br>
+<input type="text" name="description"><br><br>
+
+Amount:<br>
+<input type="number" name="amount"><br><br>
+
+Category:<br>
+<input type="text" name="category"><br><br>
+
+Date:<br>
+<input type="date" name="date"><br><br>
+
+<button type="submit">Add Expense</button>
+
+</form>
+
+<hr>
+
+<h2>Expense List</h2>
+
+<table border="1">
+<tr>
+<th>Description</th>
+<th>Amount</th>
+<th>Category</th>
+<th>Date</th>
+</tr>
+
+{% for expense in expenses %}
+<tr>
+<td>{{ expense.description }}</td>
+<td>{{ expense.amount }}</td>
+<td>{{ expense.category }}</td>
+<td>{{ expense.date }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
